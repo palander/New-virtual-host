@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "You'll need to be ROOT to run this script."
-echo "Name of the new domain? (example. domain.com or sub.domain.com)"
+echo "Name of the new domain? (example. domain.com or sub.domain.com) No trailing dot!"
 read name
 echo "Where do you want the webroot? (example. /var/www/newroot) No trailing backslash!"
 read WEB_ROOT_DIR
@@ -39,7 +39,7 @@ sed -i "1s/^/127.0.0.1 $name\n/" /etc/hosts
 a2ensite $name
 service apache2 reload
 
-echo "Done, please browse to http://$name to check!"
+echo "Done!"
 
 echo "So on with the SSL-thing..."
 sudo certbot --apache
